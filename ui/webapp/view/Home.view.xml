@@ -1,9 +1,26 @@
-<mvc:View controllerName="ui.ui.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="ui.ui.controller.Home" displayBlock="true">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<l:HorizontalLayout>
+							<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+								<GenericTile xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" backgroundImage="" frameType="TwoByOne" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'Progetti'\}\}\}">
+									<TileContent footer="Vai alla lista progetti">
+										<NewsContent contentText="Progetti" subheader=""/>
+									</TileContent>
+								</GenericTile>
+							</SlideTile>
+							<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" transitionTime="250" displayTime="2500">
+								<GenericTile backgroundImage="" frameType="TwoByOne" press="action" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" action:wiring="\{'press':\{'navigation':\{'routeName':'Ore'\}\}\}">
+									<TileContent footer="Vai al conteggio ore">
+										<NewsContent contentText="Conta Ore" subheader=""/>
+									</TileContent>
+								</GenericTile>
+							</SlideTile>
+						</l:HorizontalLayout>
+					</content>
 				</Page>
 			</pages>
 		</App>
