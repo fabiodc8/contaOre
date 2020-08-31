@@ -1,6 +1,8 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/m/MessageToast",
+	"sap/ui/core/mvc/Controller",
+	"sap/base/Log"
+], function (MessageToast, Controller, Log) {
 	"use strict";
 
 	return Controller.extend("ui.ui.controller.Progetti", {
@@ -13,6 +15,65 @@ sap.ui.define([
 		onInit: function () {
 
 		},
+		onOrientationChange: function (oEvent) {
+			var bLandscapeOrientation = oEvent.getParameter("landscape"),
+				sMsg = "Orientation now is: " + (bLandscapeOrientation ? "Landscape" : "Portrait");
+			MessageToast.show(sMsg, { duration: 5000 });
+		},
+
+		onPressNavToDetail: function () {
+			this.getSplitAppObj().to(this.createId("detailDetail"));
+		},
+
+		onPressDetailBack: function () {
+			this.getSplitAppObj().backDetail();
+		},
+
+		onPressMasterBack: function () {
+			this.getSplitAppObj().backMaster();
+		},
+
+		onPressGoToMaster: function () {
+			this.getSplitAppObj().toMaster(this.createId("master2"));
+		},
+
+		onListItemPress: function (oEvent) {
+			var sToPageId = oEvent.getParameter("listItem").getCustomData()[0].getValue();
+
+			this.getSplitAppObj().toDetail(this.createId(sToPageId));
+		},
+
+		onPressModeBtn: function (oEvent) {
+			var sSplitAppMode = oEvent.getSource().getSelectedButton().getCustomData()[0].getValue();
+
+			this.getSplitAppObj().setMode(sSplitAppMode);
+			MessageToast.show("Split Container mode is changed to: " + sSplitAppMode, { duration: 5000 });
+		},
+
+		getSplitAppObj: function () {
+			var result = this.byId("SplitAppDemo");
+			if (!result) {
+				Log.info("SplitApp object can't be found");
+			}
+			return result;
+		},
+		onAddButtonPress: function () {
+            this.getSplitAppObj().to(this.createId("createProject"));
+        },
+        onCreateDialog: function (oEvent) {
+            if (this._oDialog & this._oDialog !== undefined) {
+                this._oDialog.destroy();
+                this._oDialog = undefined;
+
+            }
+            if (!this._oDialog) {
+                this._oDialog = sap.ui.xmlfragment("contaOre.ui.view.fragment.insTask", this.getView().getController());
+                this.getView().addDependent(this._oDialog);
+            }
+
+            // return this._oDialog;
+            this._oDialog.open();
+        }
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

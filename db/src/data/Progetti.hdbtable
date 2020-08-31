@@ -1,0 +1,5 @@
+COLUMN TABLE "Progetti" (
+     "nome" NVARCHAR(60) COMMENT 'Nome Progetto',
+     "descrizione" NVARCHAR(60) COMMENT 'Descrizione',
+     PRIMARY KEY ("nome")
+)

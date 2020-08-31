@@ -1,0 +1,6 @@
+COLUMN TABLE "Tasks" (
+     "Progetti.nome" NVARCHAR(60) COMMENT 'Nome Progetto',
+     "nomeTask" NVARCHAR(60) COMMENT 'Task',
+     "descrizioneTask" INTEGER COMMENT 'Descrizione',
+     PRIMARY KEY ("Progetti.nome", "nomeTask")
+)
