@@ -2,14 +2,11 @@
 xmlns:l="sap.ui.layout"
 xmlns:t="sap.ui.table">
 	<App>
-		<pages><Page title="Title">
-				<content>
+		<pages>
 					<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange=".onOrientationChange">
 						<detailPages>
 							<Page id="tasks" title="Dettagli del progetto" backgroundDesign="Solid" class="sapUiStdPage">
 								<l:VerticalLayout>
-									<Label text="{i18n>customer}"/>
-									<Input value="{NOME CLIENTE}" editable="false"/>
 									<Label text="{i18n>nameProject}"/>
 									<Input value="{NOME PROGETTO}" editable="false"/>
 									<Label text="{i18n>descriptionProject}"/>
@@ -28,7 +25,6 @@ xmlns:t="sap.ui.table">
 									<t:extension>
 										<OverflowToolbar>
 											<Title id="title" text="Tasks del progetto"/>
-											<Button text="" width="50px" press="onCreateDialog" type="Accept" icon="sap-icon://add"/>
 										</OverflowToolbar>
 									</t:extension>
 										<t:Column width="11rem">
@@ -39,6 +35,14 @@ xmlns:t="sap.ui.table">
 										</t:Column>
 
 									</t:Table>
+								<footer>
+									<Toolbar>
+										<Button text="" press="onCreateDialog" type="Accept" icon="sap-icon://add"/>
+										<Button text="edit" id="home" press="actionAct"/>
+										<Button icon="sap-icon://save" press="onSaveSeriesButtonPress" text="{i18n>save}"/>
+										<Button text="{i18n>delete}" press="onDeleteButtonPress"/>
+									</Toolbar>
+								</footer>
 							</Page>
 							<Page id="createProject" title="Inserisci nuovo progetto" backgroundDesign="Solid" class="sapUiStdPage" showNavButton="true" navButtonText="Back" navButtonPress=".onPressDetailBack">
 								<Label text="Nome progetto"/>
@@ -65,10 +69,6 @@ xmlns:t="sap.ui.table">
 							</Page>
 						</masterPages>
 					</SplitApp>
-					<Button text="ciao">
-					</Button>
-				</content>
-			</Page>
 		</pages>
 	</App>
 </mvc:View>
