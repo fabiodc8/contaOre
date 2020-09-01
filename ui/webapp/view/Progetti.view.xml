@@ -1,74 +1,63 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="ui.ui.controller.Progetti"
-xmlns:l="sap.ui.layout"
-xmlns:t="sap.ui.table">
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" controllerName="ui.ui.controller.Progetti">
 	<App>
 		<pages>
-					<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange=".onOrientationChange">
-						<detailPages>
-							<Page id="tasks" title="Dettagli del progetto" backgroundDesign="Solid" class="sapUiStdPage">
-								<l:VerticalLayout>
-									<Label text="{i18n>nameProject}"/>
-									<Input value="{NOME PROGETTO}" editable="false"/>
-									<Label text="{i18n>descriptionProject}"/>
-									<Input value="{DESCRIZIONE PROGETTO}" editable="false"/>
-								</l:VerticalLayout>
-								<t:Table
-									rows="{/ProductCollection}"
-									selectionMode="MultiToggle"
-									visibleRowCount="7"
-									paste="onPaste"
-									ariaLabelledBy="title">
-														<!--<Toolbar>
-															<ToolbarSpacer/>
-															<Button text="Aggiungi Puntata" width="230px" press="onCreateDialog" type="Reject"/>
-														</Toolbar>-->
-									<t:extension>
-										<OverflowToolbar>
-											<Title id="title" text="Tasks del progetto"/>
-										</OverflowToolbar>
-									</t:extension>
-										<t:Column width="11rem">
-											<Label text="Task" />
-											<t:template>
-												<Text text="{TASK DEL PROGETTO}" wrapping="false" />
-											</t:template>
-										</t:Column>
-
-									</t:Table>
-								<footer>
-									<Toolbar>
-										<Button text="" press="onCreateDialog" type="Accept" icon="sap-icon://add"/>
-										<Button text="edit" id="home" press="actionAct"/>
-										<Button icon="sap-icon://save" press="onSaveSeriesButtonPress" text="{i18n>save}"/>
-										<Button text="{i18n>delete}" press="onDeleteButtonPress"/>
-									</Toolbar>
-								</footer>
-							</Page>
-							<Page id="createProject" title="Inserisci nuovo progetto" backgroundDesign="Solid" class="sapUiStdPage" showNavButton="true" navButtonText="Back" navButtonPress=".onPressDetailBack">
-								<Label text="Nome progetto"/>
-								<Input/>
-								<Label text="Descrizione"/>
-								<Input/>
-							</Page>
-						</detailPages>
-						<masterPages>
-							<Page id="master2" title="Progetti" backgroundDesign="List" icon="sap-icon://action" class="sapUiStdPage" showNavButton="true" navButtonPress=".onPressMasterBack">
-								<content>
-								<List itemPress=".onListItemPress">
-									<items>
-										<StandardListItem title="Project 1" type="Active" custom:to="tasks"/>
-										<StandardListItem title="Project 2" type="Active" custom:to="tasks"/>
-									</items>
-								</List>
-								</content>
-								<footer>
-									<Toolbar>
-									 <Button press="onAddButtonPress" id="addButton" text="Inserisci" icon="sap-icon://add" type="Emphasized"/>
-									</Toolbar>
-								</footer>
-							</Page>
-						</masterPages>
-					</SplitApp>
+			<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange=".onOrientationChange">
+				<detailPages>
+					<Page id="tasks" title="Dettagli del progetto" backgroundDesign="Solid" class="sapUiStdPage">
+						<l:VerticalLayout>
+							<Label text="{i18n>nameProject}"/>
+							<Input value="{NOME PROGETTO}" editable="false"/>
+							<Label text="{i18n>descriptionProject}"/>
+							<Input value="{DESCRIZIONE PROGETTO}" editable="false"/>
+						</l:VerticalLayout>
+						<t:Table rows="{/ProductCollection}" selectionMode="MultiToggle" visibleRowCount="7" paste="onPaste" ariaLabelledBy="title">
+							<t:extension>
+								<OverflowToolbar>
+									<Title id="title" text="Tasks del progetto"/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:Column width="11rem">
+								<Label text="Task"/>
+								<t:template>
+									<Text text="{TASK DEL PROGETTO}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:Table>
+						<footer>
+							<Toolbar>
+								<Button text="{i18n>addTask}" press="onCreateDialog" type="Accept" icon="sap-icon://add"/>
+								<Button text="{i18n>edit}" icon="sap-icon://edit" press="actionAct"/>
+								<Button text="{i18n>delete}" icon="sap-icon://delete" press="onDeleteButtonPress"/>
+								<Button icon="sap-icon://save" press="onSaveSeriesButtonPress" text="{i18n>save}"/>
+							</Toolbar>
+						</footer>
+					</Page>
+					<Page id="createProject" title="Inserisci nuovo progetto" backgroundDesign="Solid" class="sapUiStdPage" showNavButton="true" navButtonPress=".onPressDetailBack">
+						<Label text="Nome progetto"/>
+						<Input/>
+						<Label text="Descrizione"/>
+						<Input/>
+					</Page>
+				</detailPages>
+				<masterPages>
+					<Page id="master2" title="Progetti" backgroundDesign="List" icon="sap-icon://action" class="sapUiStdPage" showNavButton="false">
+						<content>
+							<List itemPress=".onListItemPress">
+								<items>
+									<StandardListItem title="Project 1" type="Active" custom:to="tasks"/>
+									<StandardListItem title="Project 2" type="Active" custom:to="tasks"/>
+								</items>
+							</List>
+						</content>
+						<footer>
+							<Toolbar>
+								<Button icon="sap-icon://undo" text="{i18n>returnHome}" custom:wiring="\{'press':\{'navigation':\{'routeName':'Home'\}\}\}" press="action"/>
+								<Button press="onAddButtonPress" id="addButton" text="{i18n>addProject}" icon="sap-icon://add" type="Emphasized"/>
+							</Toolbar>
+						</footer>
+					</Page>
+				</masterPages>
+			</SplitApp>
 		</pages>
 	</App>
 </mvc:View>

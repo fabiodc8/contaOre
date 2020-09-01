@@ -77,13 +77,6 @@
 			},
 			"routes": [
 				{
-					"name": "RouteHome",
-					"pattern": "RouteHome",
-					"target": [
-						"TargetHome"
-					]
-				},
-				{
 					"name": "Progetti",
 					"pattern": "Progetti",
 					"target": [
@@ -95,6 +88,15 @@
 					"pattern": "Ore",
 					"target": [
 						"Ore"
+					]
+				},
+				{
+					"name": "Home",
+					"pattern": "Home",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"Home"
 					]
 				}
 			],
@@ -113,6 +115,12 @@
 				"Ore": {
 					"viewType": "XML",
 					"viewName": "Ore"
+				},
+				"Home": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "Home"
 				}
 			}
 		}
