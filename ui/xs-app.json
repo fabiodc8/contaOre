@@ -9,6 +9,17 @@
       "source": "^/ui/(.*)$",
       "target": "$1",
       "localDir": "webapp"
-    }
+    },
+    {
+	  "source": "(.*)(.xsjs)",
+	  "destination": "core-xsjs-backend",
+	  "csrfProtection": false,
+	  "authenticationType": "xsuaa"
+	}, {
+	  "source": "(.*)(.xsodata)",
+	  "destination": "core-xsjs-backend",
+	  "authenticationType": "xsuaa"
+	
+	}
   ]
 }

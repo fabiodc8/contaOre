@@ -1,4 +1,4 @@
-COLUMN TABLE "Tasks" (
+COLUMN TABLE "contaOre.db.data::Tasks" (
      "Progetti.nome" NVARCHAR(60) COMMENT 'Nome Progetto',
      "nomeTask" NVARCHAR(60) COMMENT 'Task',
      "descrizioneTask" INTEGER COMMENT 'Descrizione',

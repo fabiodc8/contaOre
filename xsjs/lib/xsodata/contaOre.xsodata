@@ -1,0 +1,20 @@
+service {
+
+    "Progetti"
+      navigates ("Tasks" as "Tasks", "Ore" as "Ore")
+    
+	"Taks";
+	"Ore";
+
+	association "Tasks"
+	  principal "Progetti"("nome")
+	  multiplicity "1"
+	  dependent "Tasks"("Progetti.nome")
+	  multiplicity "*";
+	  
+    association "Ore"
+      principal "Tasks"("nomeTask")
+      multiplicity "1"
+      dependent "Ore"("Tasks.nomeTask")
+      multiplicity "*";
+}

@@ -1,8 +1,8 @@
-COLUMN TABLE "Ore" (
-     "Tasks.nome" NVARCHAR(60) COMMENT 'Progetto',
+COLUMN TABLE "contaOre.db.data::Ore" (
+     "Progetti.nome" NVARCHAR(60) COMMENT 'Progetto',
      "Tasks.nomeTask" NVARCHAR(60) COMMENT 'Task',
      "user" NVARCHAR(60) COMMENT 'Utente',
-     "giorno" DATA COMMENT 'Giorno',
-     "numeroOre" INTEGER COMMENT 'Numero Ore'
-     PRIMARY KEY ("Tasks.nome", "Tasks.nomeTask", "user", "giorno")
+     "giorno" NVARCHAR(10) COMMENT 'Giorno',
+     "numeroOre" INTEGER COMMENT 'Numero Ore',
+     PRIMARY KEY ("Progetti.nome", "Tasks.nomeTask", "user", "giorno")
 )
